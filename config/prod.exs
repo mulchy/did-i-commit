@@ -60,6 +60,11 @@ config :logger, level: :info
 #
 #     config :did_i_commit, DidICommit.Endpoint, root: "."
 
+config :did_i_commit, GitHub,
+  client_id: System.get_env("GITHUB_CLIENT_ID"),
+  client_secret: System.get_env("GITHUB_CLIENT_SECRET"),
+  redirect_uri: System.get_env("GITHUB_REDIRECT_URI"),
+
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"
