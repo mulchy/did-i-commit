@@ -60,6 +60,12 @@ config :logger, level: :info
 #
 #     config :did_i_commit, DidICommit.Endpoint, root: "."
 
+config :did_i_commit, DidICommit.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
+
 config :did_i_commit, GitHub,
   client_id: System.get_env("GITHUB_CLIENT_ID"),
   client_secret: System.get_env("GITHUB_CLIENT_SECRET"),
