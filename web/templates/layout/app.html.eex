@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello DidICommit!</title>
+    <title>Did I Commit?</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     
   </head>
@@ -24,28 +24,28 @@
 	  </button>
 	  <a href="#" class="navbar-brand navbar-left">Did I commit today?</a>
 	</div>
-	<%= if @current_user do %>
 	<div id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
-	  <img class="avatar img-circle pull-right" src="<%= @current_user.avatar%>" />
-	  <p class="navbar-text">Logged in as <%= @current_user.name %></p>
-	</ul>
-	
-	<% else %>
-	<a href="<%= auth_path @conn, :index %>">
-	  <button type="button" class="btn btn-secondary">Login</button>
-	</a>
-	<% end %>
-      </div>
+	  
+	    <%= if @current_user do %>
+	      <img class="avatar img-circle pull-left hidden-xs" src="<%= @current_user.avatar%>" />
+	      <p class="navbar-text pull-left">Logged in as <%= @current_user.name %></p>
+	      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-primary navbar-btn pull-right" %>
+	    <% else %>
+	      <a href="<%= auth_path @conn, :index %>">
+		<button type="button" class="btn btn-primary navbar-btn pull-right">Login</button>
+	      </a>
+	    <% end %>
+	 
+	</div>
     </nav>
     
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
-      <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

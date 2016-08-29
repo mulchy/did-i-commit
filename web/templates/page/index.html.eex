@@ -1,5 +1,13 @@
 <main>
-
-    <%= @events %>
-        
+  <span class="message">
+    <%= if @current_user do %>
+      <%= if @commit do %>
+        Yep!
+      <% else %>
+        Nope.
+      <% end %>
+    <% else %>
+      ¯\_(ツ)_/¯
+    <% end %>
+  </span>
 </main>

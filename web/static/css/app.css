@@ -20,3 +20,11 @@ main {
     padding-top: 10px;
     height: 30px;
 }
+
+.message {
+    font-size: 60pt;
+}
+
+form.link {
+    float: right
+}
