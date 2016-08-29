@@ -1,0 +1,22 @@
+/* This file is for your main application css. */
+.navbar {
+    margin-bottom: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.avatar {
+    box-sizing: content-box;
+    padding-top: 10px;
+    height: 30px;
+}
